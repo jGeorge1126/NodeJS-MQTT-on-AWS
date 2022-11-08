@@ -1,6 +1,7 @@
 const express = require('express');
 const mqtt = require('mqtt')
 const fs = require('fs')
+const cors = require('cors');
 const { Command } = require('commander')
 
 const program = new Command()
@@ -8,6 +9,14 @@ const program = new Command()
 const serverport = 2021;
 
 const app = express();
+app.use(cors({
+  origin: '*'
+}));
+
+app.use(cors({
+  methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH']
+}));
+
 app.get('/', (req, res) => {
     res.send('A Simple Node.js Server is Up and Running.......')
 })
