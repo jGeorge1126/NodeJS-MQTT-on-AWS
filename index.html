@@ -2,28 +2,24 @@
   <head></head>
   <body>
     <div>
-      <input type="button" value="Turn on" onclick="turnon()"/>
-      <input type="button" value="Turn off" onclick="turnoff()"/>
+      <input type="button" value="Turn on" onclick="power_on()"/>
     </div>
     <div id="label"></div>
   </body>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script>
-    function turnon(){
+    function power_on(){
+      var params = new Object();
+      params["vehiclenumber"] = "1";
+      params["title"] = "power_on";
       $.ajax({
-        url: "http://127.0.0.1:2021/turnon",
+        url: "http://127.0.0.1:2021/control-vehicle",
+        dataType: "json",
+        data: params,
+        contentType: "application/json; charset=utf-8",
         success: function(result){
           console.log(result);
-          $("#label").html("turned on");
-        }
-      });
-    }
-    function turnoff(){
-      $.ajax({
-        url: "http://127.0.0.1:2021/turnoff",
-        success: function(result){
-          console.log(result);
-          $("#label").html("turned off");
+          $("#label").html("Success");
         }
       });
     }
