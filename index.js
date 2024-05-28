@@ -27,10 +27,8 @@ program
   .option('-p, --protocol <type>', 'connect protocol: mqtt, mqtts, ws, wss. default is mqtt', 'mqtt')
   .parse(process.argv)
 
-// const host = '54.210.189.224'
-// const port = '8083'
-const host = '101.37.148.19'
-const port = '1883'
+const host = 'Your Host Address'
+const port = 'Port'
 const clientId = `mqtt_${Math.random().toString(16).slice(3)}`
 
 // connect options
@@ -38,8 +36,8 @@ const OPTIONS = {
   clientId,
   clean: true,
   connectTimeout: 4000,
-  username: 'mqtt',
-  password: 'mqtt123456',
+  username: 'User Name',
+  password: 'Password',
   reconnectPeriod: 1000,
 }
 // protocol list
@@ -64,7 +62,7 @@ if (program.protocol && PROTOCOLS.indexOf(program.protocol) === -1) {
   
 } else {}
 
-const topic = 'TEST-999666'
+const topic = 'Topic Name'
 console.log(connectUrl);
 const client = mqtt.connect(connectUrl, OPTIONS)
 
